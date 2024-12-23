@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "catalogs",
+  "info": {
+    "singularName": "catalog",
+    "pluralName": "catalogs",
+    "displayName": "catalog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "isDiscounted": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "availableSizes": {
+      "type": "enumeration",
+      "enum": [
+        "small(16-20)",
+        "medium(20-22)",
+        "large(23-25)"
+      ]
+    },
+    "imageUrl": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "type": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    }
+  }
+}
