@@ -3,7 +3,10 @@ export default function PageTitle(
 
     return(
         <div className="page-title-bg flex justify-center items-center h-[120px]">
-            Home / {destination}
+            Home / 
+            <span className="font-bold">
+            {destination} 
+            </span>
         </div>
     )
 }

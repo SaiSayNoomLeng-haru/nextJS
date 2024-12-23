@@ -56,6 +56,7 @@ export default function MainNav(){
                     height={100}
                     src='/assets/images/logo-blue.png'
                     alt='Haru Jewlery Logo'
+                    priority
                     />
             </Link>
 
