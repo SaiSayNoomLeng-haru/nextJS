@@ -11,7 +11,7 @@ export default {
       colors: {
         'custom-accent' : '#bfdbfe',
         'custom-white': '#f8f2f2',
-        'custom-gray': '#f2f2f2',
+        'custom-gray': '#f0e9e4',
         'custom-dark-green' : '#15575a',
         'custom-dark-blue': '#0f8fe5',
         'custom-dark-orange': '#eb8f09',

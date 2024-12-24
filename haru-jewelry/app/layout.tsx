@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { belleza } from "./ui/fonts";
-import MainNav from "./ui/main-nav";
-import Footer from "./ui/footer";
+import MainNav from "./ui/components/main-nav";
+import Footer from "./ui/components/footer";
 
 
 export const metadata: Metadata = {

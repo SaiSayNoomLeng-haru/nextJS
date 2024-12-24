@@ -12,7 +12,8 @@ import { CiHeart, CiShoppingCart, CiUser } from "react-icons/ci"
 
 export default function MainNav(){
     const pathname = usePathname();
-    const [ isNavOpen, setIsNavOpen ] = useState<Boolean>(false);
+    const [ isNavOpen, setIsNavOpen ] = useState(false);
+
 
     const links: NavLinks[] = [
         { name: 'home', href: '/'},
@@ -40,9 +41,9 @@ export default function MainNav(){
     )
 
     const mainNavClass = clsx(
-        'flex gap-2 capitalize fixed left-0 right-[30vw] flex-col top-[2rem] bottom-[60vh] py-10 px-3 items-end bg-custom-accent translate-x-[-100%]  transition duration-300',
+        'flex gap-2 capitalize fixed left-0 right-[30vw] flex-col top-[2rem] bottom-[60vh] py-10 px-3 items-end bg-custom-accent z-10 -translate-x-full transition',
         'md:static md:translate-x-0 md:flex-row md:bg-transparent',
-        { 'translate-x-0' : isNavOpen}
+        { 'translate-x-[0%]' : isNavOpen}
     )
 
     return(
@@ -50,7 +51,7 @@ export default function MainNav(){
             <Link
                 href='/'
                 scroll={true}
-                className="order-2 md:order-none ml-auto md:ml-0">
+                className="order-2 md:order-none ml-auto md:ml-0 ">
                 <Image 
                     width={100}
                     height={100}
@@ -61,10 +62,10 @@ export default function MainNav(){
             </Link>
 
             <button
-                // aria-expanded={isNavOpen}
-                // aria-label={isNavOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+                aria-expanded={isNavOpen}
+                aria-label={isNavOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
                 onClick={() => setIsNavOpen(prevOn => !prevOn)}
-                className="md:hidden order-1 sticky left-[1rem] z-10 text-fs-500">
+                className="md:hidden order-1 fixed left-[1rem] z-20 text-fs-500">
                     {isNavOpen ? 
                         <IoMdClose /> :
                         <RxHamburgerMenu />
@@ -101,7 +102,6 @@ export default function MainNav(){
                             key={link.name}
                             scroll={true}
                             href={link.href}
-                            onClick={() => setIsNavOpen(prevOn => !prevOn)}
                             className={clsx(
                                 {
                                     'hidden' : hiddenLinks.includes(link.name),

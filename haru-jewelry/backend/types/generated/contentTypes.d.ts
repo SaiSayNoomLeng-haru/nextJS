@@ -369,6 +369,42 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
+  collectionName: 'blogs';
+  info: {
+    description: '';
+    displayName: 'blog';
+    pluralName: 'blogs';
+    singularName: 'blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    authorImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    category: Schema.Attribute.String;
+    content: Schema.Attribute.Component<'component.content', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    datePosted: Schema.Attribute.Date;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    length: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
   collectionName: 'catalogs';
   info: {
@@ -404,6 +440,65 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'teams';
+  info: {
+    description: '';
+    displayName: 'team';
+    pluralName: 'teams';
+    singularName: 'team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUserContactUserContact extends Struct.CollectionTypeSchema {
+  collectionName: 'user_contacts';
+  info: {
+    displayName: 'userContact';
+    pluralName: 'user-contacts';
+    singularName: 'user-contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-contact.user-contact'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subject: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -919,7 +1014,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::blog.blog': ApiBlogBlog;
       'api::catalog.catalog': ApiCatalogCatalog;
+      'api::team.team': ApiTeamTeam;
+      'api::user-contact.user-contact': ApiUserContactUserContact;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
