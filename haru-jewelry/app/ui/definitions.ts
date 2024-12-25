@@ -33,3 +33,9 @@ export type userContact = {
     subject: string
     message: string
 }
+
+export type userTerms = {
+    id: number
+    title: string
+    desc: string
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from "clsx"
-import { NavLinks } from "./definitions"
+import { NavLinks } from "../definitions"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
@@ -10,10 +10,9 @@ import { RxHamburgerMenu } from "react-icons/rx"
 import { IoMdClose } from "react-icons/io"
 import { CiHeart, CiShoppingCart, CiUser } from "react-icons/ci"
 
-export default function MainNav(){
+export default function Header(){
     const pathname = usePathname();
     const [ isNavOpen, setIsNavOpen ] = useState(false);
-
 
     const links: NavLinks[] = [
         { name: 'home', href: '/'},
@@ -53,6 +52,7 @@ export default function MainNav(){
                 scroll={true}
                 className="order-2 md:order-none ml-auto md:ml-0 ">
                 <Image 
+                    style={{width: 'auto', height: 'auto'}}
                     width={100}
                     height={100}
                     src='/assets/images/logo-blue.png'

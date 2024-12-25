@@ -15,10 +15,22 @@ export interface ComponentContent extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentUserTerms extends Struct.ComponentSchema {
+  collectionName: 'components_component_user_terms';
+  info: {
+    displayName: 'userTerms';
+  };
+  attributes: {
+    desc: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'component.content': ComponentContent;
+      'component.user-terms': ComponentUserTerms;
     }
   }
 }

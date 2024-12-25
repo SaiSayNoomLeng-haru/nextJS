@@ -8,7 +8,7 @@ import Link from "next/link"
 import Button from "../ui/components/Button"
 import { CiLocationOn, CiMail, CiPhone } from "react-icons/ci"
 import Banner from "../ui/components/Banner"
-import Map from "../ui/Map"
+import Newsletter from "../ui/components/Newsletter"
 
 
 
@@ -97,7 +97,7 @@ export default function ContactUs(){
                         alt='cropped jewelry model photo'
                         width={300}
                         height={300}
-                        
+                        priority
                     />
                 </div>
             </div>
@@ -122,6 +122,7 @@ export default function ContactUs(){
 
             <Banner />
 
+            <Newsletter />
 
        </section>
     )

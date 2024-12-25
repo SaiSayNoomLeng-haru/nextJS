@@ -42,7 +42,6 @@ export async function getBlogPosts(){
 }
 
 // add user's contact information
-
 export async function addUserContact( formData : FormData){
     const baseUrl = `http://127.0.0.1:1337/api/user-contacts`
 
@@ -50,8 +49,6 @@ export async function addUserContact( formData : FormData){
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
-
-    console.log(name, email, subject, message)
 
     try {
         const resp = await fetch(baseUrl, {
@@ -62,10 +59,54 @@ export async function addUserContact( formData : FormData){
             body: JSON.stringify( { data : {name, email, subject, message} }),
         })
         const newUser = await resp.json();
-        console.log('successful', newUser)
     } catch (error) {
         if(error instanceof Error){
-            console.error(error.message);
+           return error.message
+        }
+    }
+}
+
+// add newsletter list
+export async function addNewsletterList(formData: FormData){
+    const baseUrl = `http://127.0.0.1:1337/api/newsletter-lists`;
+    const email = formData.get('email');
+
+    try {
+        const resp = await fetch(baseUrl, {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({data: {email}})
+        })
+        const newEmail = await resp.json()
+        return newEmail
+    } catch (error) {
+        if(error instanceof Error){
+            return error.message
+        }
+    }
+}
+
+// get user terms
+export async function getTermsAndCondition(){
+    const baseUrl = `http://127.0.0.1:1337/api/terms-and-conditions?populate=*`
+
+    try {
+        const resp = await fetch(baseUrl);
+        if(!resp.ok){
+            throw{
+                message: 'Cannot Get User Terms',
+                status: resp.status,
+                statusText: resp.statusText
+            }
+        }
+        const terms = await resp.json();
+        return terms.data
+    } catch (error) {
+        if(error instanceof Error){
+            console.log(error.name)
+            return error.message;
         }
     }
 }

@@ -25,6 +25,7 @@ export default function Footer(){
                 <Link 
                     href='/'>
                         <Image 
+                            style={{width: 'auto', height: 'auto'}}
                             width={200}
                             height={200}
                             src='/assets/images/logo-blue.png'

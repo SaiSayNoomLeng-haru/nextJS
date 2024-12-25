@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { belleza } from "./ui/fonts";
-import MainNav from "./ui/components/main-nav";
+import Header from "./ui/components/header";
 import Footer from "./ui/components/footer";
 
 
@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${belleza.className} antialiased`}
       >
-      <MainNav />
+      <Header />
         {children}
       <Footer />
       </body>
