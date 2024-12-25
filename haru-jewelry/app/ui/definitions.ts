@@ -20,11 +20,30 @@ export type teamMembers = {
 
 export type blogs = {
     title: string
+    id: number
+    documentId: string
     author: string
+    url: string
     datePosted: string
     category: string
     length: string
-    contents: string[]
+    content: blogContent
+    authorImage: {
+        width: number
+        height: number
+    }[]
+    imageUrl: {
+        width: number
+        height: number
+        url: string
+    }[]
+}
+
+export type blogContent = {
+    id: number
+    subTitle: string
+    description: string
+    imageUrl: {}[]
 }
 
 export type userContact = {
@@ -39,3 +58,5 @@ export type userTerms = {
     title: string
     desc: string
 }
+
+

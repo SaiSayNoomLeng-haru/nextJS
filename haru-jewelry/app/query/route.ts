@@ -41,6 +41,29 @@ export async function getBlogPosts(){
     }
 }
 
+// get blog detail
+export async function getBlogDetail(id: string){
+    const baseUrl = `http://127.0.0.1:1337/api/blogs/${id}?populate[0]=authorImage&populate[1]=imageUrl&populate[2]=content&populate[3]=content.imageUrl`;
+
+    try{
+        const resp = await fetch(baseUrl);
+        if(!resp.ok){
+            throw{
+                message: `The post you are trying to get can't be reached`,
+                status: resp.status,
+                statusText: resp.statusText
+            }
+        }
+        const blog = await resp.json();
+        return blog.data;
+    }
+    catch(error){
+        if(error instanceof Error){
+            return error.message
+        }
+    }
+}
+
 // add user's contact information
 export async function addUserContact( formData : FormData){
     const baseUrl = `http://127.0.0.1:1337/api/user-contacts`
@@ -110,3 +133,4 @@ export async function getTermsAndCondition(){
         }
     }
 }
+

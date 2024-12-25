@@ -65,7 +65,12 @@ export default function Header(){
                 aria-expanded={isNavOpen}
                 aria-label={isNavOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
                 onClick={() => setIsNavOpen(prevOn => !prevOn)}
-                className="md:hidden order-1 fixed left-[1rem] z-20 text-fs-500">
+                className={clsx(
+                    "md:hidden order-1  left-[1rem] z-20 text-fs-500",
+                    {
+                        'fixed' : isNavOpen
+                    }
+                )}>
                     {isNavOpen ? 
                         <IoMdClose /> :
                         <RxHamburgerMenu />

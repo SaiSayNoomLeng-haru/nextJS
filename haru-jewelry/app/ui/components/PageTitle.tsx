@@ -7,6 +7,7 @@ export default function PageTitle(
             <span className="font-bold">
             {destination} 
             </span>
+            
         </div>
     )
 }
