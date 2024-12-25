@@ -6,7 +6,6 @@ import clsx from "clsx"
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { LuDot } from "react-icons/lu";
-import BlogCard from "@/app/ui/components/BlogCard";
 
 export default async function BlogDetail({params} : { params: { id : string }}){
     const documentId = await params;
